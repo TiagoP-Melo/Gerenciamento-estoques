@@ -1,16 +1,19 @@
 package one.digitalinnovation.beerstock.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import one.digitalinnovation.beerstock.enums.BeerType;
-import org.hibernate.Hibernate;
 
-import javax.persistence.*;
-import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,16 +39,5 @@ public class Beer {
     @Column(nullable = false)
     private BeerType type;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Beer beer = (Beer) o;
-        return id != null && Objects.equals(id, beer.id);
-    }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
